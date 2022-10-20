@@ -18,9 +18,11 @@ return new class extends Migration
             $table -> integer('setting_id') -> unsigned();
             $table -> string('locale');
             $table -> longText('value')->nullable();
-            $table -> unique(['setting_id']);
+            //$table -> unique(['setting_id']);
+            $table->dropUnique(['setting_id']);
             $table -> foreign('setting_id')->references('id')->on('settings')->onDelete('cascade');
         });
+
     }
 
     /*

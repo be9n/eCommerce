@@ -13,7 +13,7 @@ class ShippingRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,16 @@ class ShippingRequest extends FormRequest
     public function rules()
     {
         return [
+            'id' => 'required|exists:settings',
             'value' => 'required',
+            'plain_value' => 'numeric|nullable',
         ];
+    }
+
+    public function messages()
+    {
+            return [
+                'id.exists' => "There's no such an id"
+            ];
     }
 }

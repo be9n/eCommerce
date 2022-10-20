@@ -37,14 +37,17 @@
                                         </ul>
                                     </div>
                                 </div>
-                                @include('admin.includes.alerts.success')
-                                @include('admin.includes.alerts.errors')
+
                                 <div class="card-content collapse show">
+
                                     <div class="card-body">
+                                        @include('admin.includes.alerts.success')
+                                        @include('admin.includes.alerts.errors')
                                         <form class="form" action="{{route('update.shipping.methods',$shippingMethod->id)}}"
-                                              method="POST"
+                                              method="post"
                                               enctype="multipart/form-data">
                                             @csrf
+                                            @method('put')
                                             <input type="hidden" name="id" value="{{$shippingMethod->id}}">
 
                                             <div class="form-body">
@@ -66,9 +69,9 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput2"> قيمة التوصيل </label>
-                                                            <input type="number" value="" id="plain_value"
+                                                            <input type="number" value="{{$shippingMethod->plain_value}}" id="plain_value"
                                                                    class="form-control"
-                                                                   placeholder="  "
+                                                                   placeholder=""
                                                                    name="plain_value">
                                                             @error('plain_value')
                                                             <span class="text-danger"> {{$message}}</span>

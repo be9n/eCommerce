@@ -16,7 +16,7 @@ class SettingDatabaseSeeder extends Seeder
     public function run()
     {
         Setting::setMany([
-            'default_locale' => 'en',
+            'default_locale' => 'ar',
             'default_timezone' => 'asia/istanbul',
             'reviews_enabled' => true,
             'auto_approve_reviews' => true,
@@ -29,9 +29,9 @@ class SettingDatabaseSeeder extends Seeder
             'free_shipping_cost' => 0,
             'translatable' => [
                 'store_name' => 'Apo Shop',
-                'free_shipping_label' => 'توصيل مجاني',
-                'local_shipping_label' => 'توصيل داخلي',
-                'global_shipping_label' => 'توصيل خارجي',
+                'free_shipping_label' => 'free shipping',
+                'local_shipping_label' => 'local shipping',
+                'global_shipping_label' => 'global shipping',
             ],
         ]);
     }

@@ -31,7 +31,7 @@
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                 <span class="mr-1">
-                  <span class="user-name text-bold-600">Apo</span>
+                  <span class="user-name text-bold-600">{{auth('admin')->user()->name}}</span>
                     Hello
                 </span>
                             <span class="avatar avatar-online">
@@ -40,7 +40,7 @@
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href=""><i
                                     class="ft-user"></i> تعديل الملف الشحصي </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href=""><i class="ft-power"></i> تسجيل
+                            <a class="dropdown-item" href="{{route('admin.logout')}}"><i class="ft-power"></i> تسجيل
                                 الخروج </a>
                         </div>
                     </li>
