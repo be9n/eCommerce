@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingsController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +15,13 @@ Route::group(['namespace'=> 'Admin', 'middleware' => 'auth:admin', 'prefix' => '
 
     Route::group(['prefix' => 'settings'], function(){
        Route::get('shipping-methods/{type}', [SettingsController::class, 'editShippingMethods'])->name('edit.shipping.methods');
-       Route::put('shipping-methods/{id}', [SettingsController::class, 'updateShippingMethods'])->name('update.shipping.methods');
+       Route::post('shipping-methods/{id}', [SettingsController::class, 'updateShippingMethods'])->name('update.shipping.methods');
+    });
 
+    Route::group(['prefix' => 'profile'], function (){
+        Route::get('edit', [ProfileController::class, 'editProfile']) -> name('admin.profile.edit');
+        Route::put('update', [ProfileController::class, 'updateProfile'])->name('admin.profile.update');
+       // Route::put('update/password', [ProfileController::class, 'updatePassword'])->name('admin.profile.password.update');
     });
 });
 

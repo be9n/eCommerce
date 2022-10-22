@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ShippingRequest extends FormRequest
+class AdminProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,11 @@ class ShippingRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|exists:settings',
-            'plain_value' => 'numeric|nullable',
+            'name' => 'required',
+            'email' => 'required|email|unique:admins,email,'.$this -> id,
+            'password' => 'nullable|min:8|confirmed'
         ];
     }
 
-    public function messages()
-    {
-            return [
-                'id.exists' => "There's no such an id"
-            ];
-    }
+
 }

@@ -29,7 +29,8 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }, "files": [
-            "app/Helpers/general.php"
+            "app/Helpers/general.php",
+            "app/Helpers/systemLang.php"
         ]
 
     },

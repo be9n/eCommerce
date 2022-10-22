@@ -43,50 +43,68 @@
                                     <div class="card-body">
                                         @include('admin.includes.alerts.success')
                                         @include('admin.includes.alerts.errors')
-                                        <form class="form" action="{{route('update.shipping.methods',$shippingMethod->id)}}"
+                                        <form class="form" action="{{route('admin.profile.update')}}"
                                               method="post"
                                               enctype="multipart/form-data">
                                             @csrf
-
-                                            <input type="hidden" name="id" value="{{$shippingMethod->id}}">
+                                            @method('PUT')
+                                            <input type="hidden" name="id" value="{{$admin->id}}">
 
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-box"></i> {{$shippingMethod->value}} </h4>
+                                                <h4 class="form-section"><i class="ft-box"></i> Admin {{$admin->name}} </h4>
                                                 <div class="row">
 
-                                                    @foreach( locales() as $locale => $value)
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <div class="col col-md-3"><label for="name" class=" form-control-label">Name ({{ __($locale) }})<span class="required">*</span></label></div>                                                            <input type="text" value="{{ old('value_'.$locale) }}"
+                                                            <div class="col col-md-3"><label for="name" class=" form-control-label">Admin name<span class="required">*</span></label></div>
+                                                            <input type="text" value="{{$admin -> name}}"
                                                                    class="form-control"
-                                                                   placeholder="Enter name in {{$locale}}"
-                                                                   name="value_{{$locale}}" value="{{ old('value_'.$locale) }}">
-                                                            @error('value_'.$locale)
+                                                                   placeholder=""
+                                                                   name="name">
+                                                            @error('name')
                                                             <span class="text-danger">{{$message}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    @endforeach
-
-
-
-
-
-
 
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput2"> قيمة التوصيل </label>
-                                                            <input type="number" value="{{$shippingMethod->plain_value}}"
+                                                            <div class="col col-md-3"><label for="name" class=" form-control-label">Admin email<span class="required">*</span></label></div>
+                                                            <input type="email" value="{{$admin -> email}}"
                                                                    class="form-control"
                                                                    placeholder=""
-                                                                   name="plain_value">
-                                                            @error('plain_value')
-                                                            <span class="text-danger"> {{$message}}</span>
+                                                                   name="email">
+                                                            @error('email')
+                                                            <span class="text-danger">{{$message}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <div class="col col-md-6"><label for="name" class=" form-control-label">New password<span class="required">*</span></label></div>
+                                                            <input type="password" value=""
+                                                                   class="form-control"
+                                                                   placeholder="Password"
+                                                                   name="password">
+                                                            @error('password')
+                                                            <span class="text-danger">{{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <div class="col col-md-6"><label class=" form-control-label">New password confirmation<span class="required">*</span></label></div>
+                                                            <input type="password" value=""
+                                                                   class="form-control"
+                                                                   placeholder="Password Confirmation"
+                                                                   name="password_confirmation">
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
 
 
@@ -110,7 +128,7 @@
                                             </div>
 
 
-                                            <div id="map" style="height: 60px;width: 1000px;"></div>
+                                            <div id="map" style="height: 10px;width: 1000px;"></div>
 
                                             <div class="form-actions">
                                                 <button type="submit" class="btn btn-primary">
@@ -118,6 +136,8 @@
                                                 </button>
                                             </div>
                                         </form>
+
+
                                     </div>
                                 </div>
                             </div>
