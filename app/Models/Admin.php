@@ -28,4 +28,8 @@ class Admin extends Authenticatable
         'updated_at',
     ];
 
+    public function setPasswordAttribute($password){
+        $this -> attributes['password'] = bcrypt($password);
+    }
+
 }

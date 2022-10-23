@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\Admin\MainCategoriesController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingsController;
 use Illuminate\Support\Facades\Route;
+
+
 
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){ //...
@@ -23,6 +26,14 @@ Route::group(['namespace'=> 'Admin', 'middleware' => 'auth:admin', 'prefix' => '
         Route::put('update', [ProfileController::class, 'updateProfile'])->name('admin.profile.update');
        // Route::put('update/password', [ProfileController::class, 'updatePassword'])->name('admin.profile.password.update');
     });
+
+    ################################### Begin Categories Routes ################################################
+    Route::group(['prefix' => 'main_categories'], function(){
+        Route::get('/', [MainCategoriesController::class, 'AllMainCategories'])->name('admin.mainCategories');
+        Route::get('edit/{id}', [MainCategoriesController::class, 'edit'])->name('admin.mainCategories.edit');
+        Route::post('update/{id}', [MainCategoriesController::class, 'update'])->name('admin.mainCategories.update');
+    });
+    ################################### End Categories Routes ################################################
 });
 
 

@@ -23,9 +23,9 @@ class ProfileController extends Controller
 
             $admin =Admin::find(auth('admin')->user()->id);
 
-            if ($request -> filled('password')){
+           /* if ($request -> filled('password')){
                 $request -> merge(['password' => bcrypt($request -> password)]);
-            }
+            }*/
 
            // $request -> request -> remove('id');
             unset($request['id'], $request['password_confirmation']);
